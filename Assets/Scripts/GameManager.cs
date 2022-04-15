@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject grounds;
     [SerializeField] int difficulty = 1;
     [SerializeField] List<GameObject> groundsToSpawn;
-    private float offset = 2929f;
-    public int nbObstacles = 0;
+    [SerializeField] public float roadSpeed = 500f;
+    [SerializeField] public float despawnCountdown = 5f;
+    [SerializeField] GameObject dialogueBox;
 
+    private float offset = 2800f;
+    public int nbObstacles = 0;
     void Start() {
         groundsToSpawn = new List<GameObject>();
         HandleDifficulty(difficulty);
@@ -48,5 +51,9 @@ public class GameManager : MonoBehaviour
         groundsToSpawn[RoadToGet].SetActive(true);
         groundsToSpawn[RoadToGet].transform.position = new Vector3(0, 0, posZ + offset);
         
+    }
+
+    public void SceneLoader(string sceneName) {
+        Debug.Log(sceneName);
     }
 }

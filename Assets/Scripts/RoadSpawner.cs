@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
-    [SerializeField] float countdown = 0.5f;
     private bool playerEntered = false;
     GameObject groundParent;
 
@@ -24,7 +23,7 @@ public class RoadSpawner : MonoBehaviour
 
     IEnumerator HandleTriggerEnter(float posZ) {
         gameManager.HandleRoadSpawner(posZ);
-        yield return new WaitForSeconds(countdown);
+        yield return new WaitForSeconds(gameManager.despawnCountdown);
         groundParent.SetActive(false);
     }
 
